@@ -4,8 +4,12 @@
 
 # G.R.E Lab
 
-**G.R.E Lab (Game Reverse Engineering Laboratory)** is a tool to manipulate and study game engines functionalities & behaviours, by reversing structs, classes, enums and symbols you can directly contribute to this tool.
+**G.R.E Lab (Game Reverse Engineering Laboratory)** is a tool to manipulate and study game engines functionalities & behaviours.
 
+### How to contribute ?
+By reversing structs, classes, enums and symbols you can directly contribute to this tool.
+
+### More Infos
 > [!NOTE]
 > Right now the purpose of this tool is only to study **Red Dead Redemption**, but this can be easily suited for others games.
 
