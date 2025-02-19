@@ -1,5 +1,5 @@
 <div align="center">
-    <a href="https://github.com/Red-Mods/G.R.E-Lab"><img src="https://github.com/user-attachments/assets/f4f32e6a-7439-49ea-b413-1b4b8cd8eefd" alt="G.R.E Lab"/></a>
+    <a href="https://github.com/Red-Mods/G.R.E-Lab"><img src="https://github.com/user-attachments/assets/6c30429c-d5f9-4336-8d2e-f26f5f3f98f9" alt="G.R.E Lab"/></a>
 </div>
 
 # G.R.E Lab
