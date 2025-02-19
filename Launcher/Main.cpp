@@ -1,8 +1,19 @@
-#include <iostream>
+#include "Source/Launcher/Launcher.h"
 
 
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    Launcher launcher;
+    launcher.Start();
+
+    while (true)
+    {
+        if (!launcher.Update())
+            break;
+
+        Sleep(10);
+    }
+
+    launcher.Stop();
 }
