@@ -13,7 +13,7 @@ namespace rage
 
 	bool sagActor::IsAlive() const
 	{
-		return m_HealthComponent && m_HealthComponent->m_CurrentHealth > 0.0;
+		return m_HealthComponent && m_HealthComponent->m_CurrentHealth > 0.0f;
 	}
 
 
