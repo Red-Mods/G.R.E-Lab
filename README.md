@@ -17,7 +17,7 @@ By reversing structs, classes, enums and symbols you can directly contribute to 
 - Experience with C++
 
 ### Is there any reverse engineering resources provided with this tool ?
-Yes, there is some resources available [here](https://github.com/Red-Mods/G.R.E-Lab/Research).
+Yes, there is some resources available [here](https://github.com/Red-Mods/G.R.E-Lab/tree/main/Research).
 
 ### More Infos
 > [!NOTE]
