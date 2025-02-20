@@ -32,9 +32,8 @@ bld/
 [Ll]og/
 [Ll]ogs/
 
-# But explicitly allow Log.cpp and Log.h
-!Log.cpp
-!Log.h
+# But explicitly allow everything under RDR/Source/
+!RDR/Source/*
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
