@@ -16,6 +16,9 @@ By reversing structs, classes, enums and symbols you can directly contribute to 
 - Reverse engineering (The knowledge of this softwares is recommended: IDA, Ghidra, x64dbg, ReClass, Cheat Engine)
 - Experience with C++
 
+### Is there any reverse engineering resources provided with this tool ?
+Yes, there is some resources available [here](https://github.com/Red-Mods/G.R.E-Lab/tree/main/RDR/Research).
+
 ### More Infos
 > [!NOTE]
 > Right now the purpose of this tool is only to study **Red Dead Redemption**, but this can be easily suited for others games.
