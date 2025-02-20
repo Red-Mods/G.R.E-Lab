@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Source\Application\Application.h" />
+    <ClInclude Include="Source\NativesInvoker\NativesInvoker.h" />
+    <ClInclude Include="Source\Log\Log.h" />
+    <ClInclude Include="Source\InputsHook\InputsHook.h" />
+    <ClInclude Include="Source\ImGUI\ImGUI.h" />
+    <ClInclude Include="Source\ImGUI\ImGUIWindow.h" />
+    <ClInclude Include="Source\ImGUI\Console\Console.h" />
+    <ClInclude Include="Source\ImGUI\Console\Commands\Commands.h" />
+    <ClInclude Include="Source\Engine\Engine.h" />
+    <ClInclude Include="Source\DirectXHook\DirectXHook.h" />
+    <ClInclude Include="Headers\EventsHandler.h" />
+    <ClInclude Include="Headers\Defines.h" />
+    <ClInclude Include="Headers\Hook.h" />
+    <ClInclude Include="Headers\IconsFontAwesome6.h" />
+    <ClInclude Include="Headers\IconsFontAwesome6Brands.h" />
+    <ClInclude Include="Headers\Math.h" />
+    <ClInclude Include="Headers\Memory.h" />
+    <ClInclude Include="Headers\Pattern.h" />
+    <ClInclude Include="Headers\Singleton.h" />
+    <ClInclude Include="Headers\Utils.h" />
+    <ClInclude Include="Headers\VMT.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Source\Game\ioMouse\ioMouse.h" />
+    <ClInclude Include="Source\Game\UIInput\UIInput.h" />
+    <ClInclude Include="Source\Game\sagPlayerMgr\sagPlayerMgr.h" />
+    <ClInclude Include="Source\Game\sagPlayer\sagPlayer.h" />
+    <ClInclude Include="Source\Game\sagActor\sagActor.h" />
+    <ClInclude Include="Source\Game\sagActorManager\sagActorManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Source\Application\Application.cpp" />
+    <ClCompile Include="Source\NativesInvoker\NativesInvoker.cpp" />
+    <ClCompile Include="Source\Log\Log.cpp" />
+    <ClCompile Include="Source\InputsHook\InputsHook.cpp" />
+    <ClCompile Include="Source\ImGUI\ImGUI.cpp" />
+    <ClCompile Include="Source\ImGUI\Console\Console.cpp" />
+    <ClCompile Include="Source\ImGUI\Console\Commands\Commands.cpp" />
+    <ClCompile Include="Source\Engine\Engine.cpp" />
+    <ClCompile Include="Source\DirectXHook\DirectXHook.cpp" />
+    <ClCompile Include="Source\Game\ioMouse\ioMouse.cpp" />
+    <ClCompile Include="Source\Game\UIInput\UIInput.cpp" />
+    <ClCompile Include="Source\Game\sagPlayerMgr\sagPlayerMgr.cpp" />
+    <ClCompile Include="Source\Game\sagPlayer\sagPlayer.cpp" />
+    <ClCompile Include="Source\Game\sagActor\sagActor.cpp" />
+    <ClCompile Include="Source\Game\sagActorManager\sagActorManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="RDR.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="fa-solid-900.ttf" />
+    <Font Include="HapnaSlabSerif-DemiBold.ttf" />
+    <Font Include="Font Awesome 6 Brands-Regular-400.otf" />
+    <Font Include="GameFont.otf" />
+  </ItemGroup>
+</Project>

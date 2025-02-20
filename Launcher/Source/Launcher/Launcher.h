@@ -9,7 +9,7 @@
 #include <unordered_map>
 #include <shellapi.h>
 
-#include "../Headers/Ini.hpp"
+#include "../../Headers/Ini.hpp"
 
 
 
@@ -49,7 +49,7 @@ class Launcher
 		
 		Plateform GetPlateform(const std::filesystem::path& _GameDirectory);
 		bool IsModdedGame(const std::filesystem::path& _GameDirectory);
-		bool LoadCore(HANDLE _Process);
+		bool LoadCore(HANDLE _Process, const std::filesystem::path& _DllFile);
 
 		bool Launch(const std::string& _LaunchCode);
 };

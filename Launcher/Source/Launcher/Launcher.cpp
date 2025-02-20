@@ -23,7 +23,6 @@ Launcher::Launcher()
 void Launcher::Start()
 {
 	std::cout << "Welcome to G.R.E Lab !\n";
-
 	std::cout << "Please choose the desired title you want to launch:" << std::endl;
 
 	for (const auto& [launchCode, gameTitle] : m_SupportedGames)
@@ -99,14 +98,14 @@ bool Launcher::IsModdedGame(const std::filesystem::path& _GameDirectory)
 
 
 
-bool Launcher::LoadCore(HANDLE _Process)
+bool Launcher::LoadCore(HANDLE _Process, const std::filesystem::path& _DllFile)
 {
 	const std::filesystem::path dataPath = "Data"_ApplicationPath;
 
 	// We're adding our 'Data' foldeer to the list of searchable directory into the game process.
 	Utils::AddDirectory(_Process, dataPath.string().c_str());
 
-	const std::filesystem::path coreModule = dataPath / "Core.dll";
+	const std::filesystem::path coreModule = dataPath / _DllFile;
 
 	// Then we can now inject our core dll (others dlls inside 'Data' folder will be implicitely loaded)
 	if (Utils::InjectDLL(_Process, coreModule.wstring().c_str()))
@@ -157,8 +156,10 @@ bool Launcher::Launch(const std::string& _LaunchCode)
 
 	std::cout << "Launching game..." << std::endl;
 
-	std::filesystem::path gamePath = tmpGamePath;
-	std::filesystem::path gameDirectory = tmpGamePath.remove_filename();
+	const std::filesystem::path gamePath = tmpGamePath;
+	const std::filesystem::path gameDirectory = tmpGamePath.remove_filename();
+	std::filesystem::path gameExecutable = gameTitle.Executable;
+	const std::filesystem::path dllToLoad = gameExecutable.replace_extension("dll");
 
 	if (IsModdedGame(gameDirectory))
 	{
@@ -167,64 +168,67 @@ bool Launcher::Launch(const std::string& _LaunchCode)
 		Sleep(1000);
 	}
 
-	Plateform plateform = GetPlateform(gameDirectory);
+	DWORD gameProcessId = Utils::GetProcessIdByName(gameTitle.Executable);
 
-	if (plateform == Epic)
+	if (gameProcessId == NULL)
 	{
-		const std::string launchString = "com.epicgames.launcher://apps/" + gameTitle.EpicId + "%3ALoon?action=launch&silent=true";
+		Plateform plateform = GetPlateform(gameDirectory);
 
-		ShellExecuteA(NULL, NULL, launchString.c_str(), NULL, NULL, SW_HIDE);
-	}
-	else if (plateform == Steam)
-	{
-		const std::string launchString = "steam://rungameid/" + gameTitle.SteamId;
-
-		ShellExecuteA(NULL, NULL, launchString.c_str(), NULL, NULL, SW_HIDE);
-	}
-	else
-	{
-		STARTUPINFO si = { sizeof(si) };
-		PROCESS_INFORMATION pi = {};
-
-		bool success = CreateProcess
-		(
-			gamePath.wstring().c_str(),
-			NULL,
-			NULL,
-			NULL,
-			FALSE,
-			CREATE_SUSPENDED,
-			NULL,
-			gameDirectory.wstring().c_str(),
-			&si,
-			&pi
-		);
-
-		if (success)
+		if (plateform == Epic)
 		{
-			if (LoadCore(pi.hProcess))
+			const std::string launchString = "com.epicgames.launcher://apps/" + gameTitle.EpicId + "%3ALoon?action=launch&silent=true";
+
+			ShellExecuteA(NULL, NULL, launchString.c_str(), NULL, NULL, SW_HIDE);
+		}
+		else if (plateform == Steam)
+		{
+			const std::string launchString = "steam://rungameid/" + gameTitle.SteamId;
+
+			ShellExecuteA(NULL, NULL, launchString.c_str(), NULL, NULL, SW_HIDE);
+		}
+		else
+		{
+			STARTUPINFO si = { sizeof(si) };
+			PROCESS_INFORMATION pi = {};
+
+			bool success = CreateProcess
+			(
+				gamePath.wstring().c_str(),
+				NULL,
+				NULL,
+				NULL,
+				FALSE,
+				CREATE_SUSPENDED,
+				NULL,
+				gameDirectory.wstring().c_str(),
+				&si,
+				&pi
+			);
+
+			if (success)
 			{
-				ResumeThread(pi.hThread);
-			}
-			else
-			{
-				TerminateProcess(pi.hProcess, EXIT_SUCCESS);
+				if (LoadCore(pi.hProcess, dllToLoad))
+				{
+					ResumeThread(pi.hThread);
+				}
+				else
+				{
+					TerminateProcess(pi.hProcess, EXIT_SUCCESS);
+				}
+
+				CloseHandle(pi.hProcess);
+				CloseHandle(pi.hThread);
 			}
 
-			CloseHandle(pi.hProcess);
-			CloseHandle(pi.hThread);
+			Sleep(500);
+
+			return true;
 		}
 
-		Sleep(500);
-
-		return true;
+		std::cout << "Waiting for " << gameTitle.Name << "..." << std::endl;
 	}
 
-	std::cout << "Waiting for " << gameTitle.Name << "..." << std::endl;
-
 	// We're waiting for the game process to show up...
-	DWORD gameProcessId = NULL;
-
 	do
 	{
 		gameProcessId = Utils::GetProcessIdByName(gameTitle.Executable);
@@ -236,7 +240,7 @@ bool Launcher::Launch(const std::string& _LaunchCode)
 	// Then we open a process handle from the game process id.
 	HANDLE process = OpenProcess(PROCESS_ALL_ACCESS, FALSE, gameProcessId);
 
-	LoadCore(process);
+	LoadCore(process, dllToLoad);
 
 	Sleep(500);
 

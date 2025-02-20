@@ -6,8 +6,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Launcher\Launcher.h" />
-    <ClInclude Include="Source\Headers\Ini.hpp" />
-    <ClInclude Include="Source\Headers\Utils.hpp" />
-    <ClInclude Include="Source\Headers\Defines.hpp" />
+    <ClInclude Include="Headers\Ini.hpp" />
+    <ClInclude Include="Headers\Utils.hpp" />
+    <ClInclude Include="Headers\Defines.hpp" />
   </ItemGroup>
 </Project>
