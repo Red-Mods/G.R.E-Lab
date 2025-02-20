@@ -32,31 +32,14 @@ ImGUI::ImGUI()
 	m_IO->ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange;
 
 	// Create and load custom font.
-	FontData fontData = Utils::LoadFont(HINST_THISCOMPONENT, MAKEINTRESOURCEW(IDR_GAMEFONT), L"OTF");
-	FontData fontData2 = Utils::LoadFont(HINST_THISCOMPONENT, MAKEINTRESOURCEW(IDR_GAMEFONT2), L"TTF");
+	FontData fontData = Utils::LoadFont(HINST_THISCOMPONENT, MAKEINTRESOURCEW(IDR_GAMEFONT), L"TTF");
 
 	ImFontConfig fontConfig;
 	fontConfig.FontDataOwnedByAtlas = false;
-	fontConfig.OversampleH = 8;
-	fontConfig.OversampleV = 8;
-
-	FontData fontData3 = Utils::LoadFont(HINST_THISCOMPONENT, MAKEINTRESOURCEW(IDR_FASOLID900), L"TTF");
-	FontData fontData4 = Utils::LoadFont(HINST_THISCOMPONENT, MAKEINTRESOURCEW(IDR_FABRANDS400), L"OTF");
-
-	ImFontConfig fontIconsConfig;
-	fontIconsConfig.MergeMode = true;
-	fontIconsConfig.PixelSnapH = true;
-
-	static const ImWchar fontIconsRanges1[] = { ICON_MIN_FA, ICON_MAX_16_FA, 0 };
-	static const ImWchar fontIconsRanges2[] = { ICON_MIN_FAB, ICON_MAX_16_FAB, 0 };
+	fontConfig.OversampleH = 2;
+	fontConfig.OversampleV = 2;
 
 	m_IO->Fonts->AddFontFromMemoryTTF(fontData.Data, fontData.Length, 30.0f, &fontConfig);
-	m_IO->Fonts->AddFontFromMemoryTTF(fontData3.Data, fontData3.Length, 22.5f, &fontIconsConfig, fontIconsRanges1);
-	m_IO->Fonts->AddFontFromMemoryTTF(fontData4.Data, fontData4.Length, 22.5f, &fontIconsConfig, fontIconsRanges2);
-
-	m_IO->Fonts->AddFontFromMemoryTTF(fontData2.Data, fontData2.Length, 30.0f, &fontConfig);
-	m_IO->Fonts->AddFontFromMemoryTTF(fontData3.Data, fontData3.Length, 22.5f, &fontIconsConfig, fontIconsRanges1);
-	m_IO->Fonts->AddFontFromMemoryTTF(fontData4.Data, fontData4.Length, 22.5f, &fontIconsConfig, fontIconsRanges2);
 
 	// Creating ImGUI theme & style.
 	m_Style = &ImGui::GetStyle();

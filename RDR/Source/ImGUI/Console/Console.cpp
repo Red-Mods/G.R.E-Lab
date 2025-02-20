@@ -4,7 +4,8 @@
 
 Console::Console()
 {
-	m_Position = ImVec2(0.0f, 0.0f);
+	m_Position = ImVec2(100.0f, 100.0f);
+	m_Size = ImVec2(800.0f, 600.0f);
 
 	m_OpenHotkey = ImGuiKey_F8;
 
@@ -35,15 +36,9 @@ void Console::Render()
 	if (!IsOpen())
 		return;
 
-	const float padding = 16.0f;
-
-	const float buttonWidth = 100.0f;
-
-	ImGui::SetNextWindowSizeConstraints(ImVec2(resolution.x, -1), ImVec2(resolution.x, -1));
-
-	if (ImGui::Begin("##ConsoleWindow", NULL, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoSavedSettings))
+	if (ImGui::Begin(APPLICATION_NAME " | Console##ConsoleWindow", NULL, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoSavedSettings))
 	{
-		if (ImGui::BeginChild("##ConsoleContent", ImVec2(resolution.x - padding, resolution.y / 4.0f), ImGuiChildFlags_Border))
+		if (ImGui::BeginChild("##ConsoleContent", ImVec2(0, m_Size.y - 60.0f), ImGuiChildFlags_Border))
 		{
 			const auto& lines = Log::GetCachedLogs();
 
@@ -83,8 +78,6 @@ void Console::Render()
 			ImGui::EndChild();
 		}
 
-		ImGui::PushItemWidth(resolution.x - buttonWidth - (padding * 2));
-
 		if (m_FocusTextInput)
 		{
 			m_FocusTextInput = false;
@@ -111,11 +104,9 @@ void Console::Render()
 			}
 		}
 
-		ImGui::PopItemWidth();
-
 		ImGui::SameLine();
 
-		if (ImGui::Button("Open Logs", ImVec2(buttonWidth + (padding / 2), 0)))
+		if (ImGui::Button("Open Logs"))
 		{
 			ShellExecuteA(NULL, "open", APPLICATION_NAME ".log", NULL, NULL, SW_SHOWDEFAULT);
 		}

@@ -2,10 +2,7 @@
 // fichier Include Microsoft Visual C++.
 // Utilisé par RDR.rc
 //
-#define IDR_GAMEFONT                    101
-#define IDR_FASOLID900                  102
-#define IDR_GAMEFONT2                   103
-#define IDR_FABRANDS400                 104
+#define IDR_GAMEFONT                    103
 
 // Next default values for new objects
 // 

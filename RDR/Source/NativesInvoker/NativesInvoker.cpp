@@ -6,12 +6,12 @@ namespace Rage
 {
 	void NativesInvoker::Initialize()
 	{
-		Pattern("rage::scrThread::s_NativeRegistrationTable", "4C 8B 1D ? ? ? ? 41 8B C1").Scan([](const Pattern& _This)
+		Pattern("rage::scrThread::sm_CommandsRegistrationTable", "4C 8B 1D ? ? ? ? 41 8B C1").Scan([](const Pattern& _This)
 		{
 			s_NativeRegistration = _This.Add(3).Rip().As<decltype(s_NativeRegistration)>();
 		});
 
-		Pattern("rage::scrThread::RegisterNative", "48 89 5C 24 ? 57 48 83 EC 20 44 8B 0D ? ? ? ?").Scan([](const Pattern& _This)
+		Pattern("rage::scrThread::RegisterCommand", "48 89 5C 24 ? 57 48 83 EC 20 44 8B 0D ? ? ? ?").Scan([](const Pattern& _This)
 		{
 			s_RegisterNative = _This.As<decltype(s_RegisterNative)>();
 		});

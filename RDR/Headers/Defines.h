@@ -2,7 +2,7 @@
 
 
 
-#define APPLICATION_NAME "G.R.E Lab - RDR"
+#define APPLICATION_NAME "G.R.E Lab"
 #define GAME_WINDOW_CLASS_NAME "Red Dead Redemption"
 
 #define MAX_CACHED_LOGS 0x100
