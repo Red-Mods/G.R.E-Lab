@@ -38,6 +38,7 @@ const std::unordered_map<LogType, LogColor> Log::s_Colors =
 
 void Log::Print(LogType _Type, const char* _Format, ...)
 {
+	// proot
 	std::lock_guard<std::mutex> lock(s_Mutex);
 
 	FILE* file;
