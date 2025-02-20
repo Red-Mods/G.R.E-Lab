@@ -1,0 +1,2 @@
+# How to use ?
+This is the Nintendo Switch symbols, it can be used to reverse engineer stuff related to Red Dead Redemption. It's recommended to use with Ghidra or Binary Ninja bcs IDA seems to not work well.
