@@ -106,7 +106,7 @@ bool Launcher::LoadCore(HANDLE _Process, const std::filesystem::path& _DllFile)
 {
 	const std::filesystem::path dataPath = "Data"_ApplicationPath;
 
-	// We're adding our 'Data' foldeer to the list of searchable directory into the game process.
+	// We're adding our 'Data' folder to the list of searchable directory into the game process.
 	Utils::AddDirectory(_Process, dataPath.string().c_str());
 
 	const std::filesystem::path coreModule = dataPath / _DllFile;
@@ -167,7 +167,7 @@ bool Launcher::Launch(const std::string& _LaunchCode)
 
 	if (IsModdedGame(gameDirectory))
 	{
-		std::cout << "Modded files has been found in your game directory, this is heavily recommended to disable/uninstall when using this application !" << std::endl;
+		std::cout << "Modded files has been found in your game directory, this is heavily recommended to disable/uninstall mods when using this application !" << std::endl;
 
 		Sleep(1000);
 	}
@@ -228,9 +228,9 @@ bool Launcher::Launch(const std::string& _LaunchCode)
 
 			return true;
 		}
-
-		std::cout << "Waiting for " << gameTitle.Name << "..." << std::endl;
 	}
+
+	std::cout << "Waiting for " << gameTitle.Name << "..." << std::endl;
 
 	// We're waiting for the game process to show up...
 	do
