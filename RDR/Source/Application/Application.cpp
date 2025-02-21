@@ -10,12 +10,6 @@ void Application::Initialize(HMODULE _Module)
 	// Set console name.
 	SetConsoleTitleA(APPLICATION_NAME);
 
-	// Disable console close button.
-	HWND consoleWindow = GetConsoleWindow();
-	HMENU consoleMenu = GetSystemMenu(consoleWindow, FALSE);
-
-	EnableMenuItem(consoleMenu, SC_CLOSE, MF_GRAYED);
-
 	// Disable console selection mode.
 	HANDLE consoleInput = GetStdHandle(STD_INPUT_HANDLE);
 

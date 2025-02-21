@@ -2,32 +2,22 @@
 
 
 
-// ImGUI colors definition.
-#define IMGUI_COLOR_LIGHTBLUE ImVec4(0.0f, 0.5f, 1.0f, 0.8f)
-
-#define IMGUI_COLOR_FRED ImVec4(1.0f, 0.0f, 0.0f, 1.0f)
-#define IMGUI_COLOR_RED ImVec4(1.0f, 0.0f, 0.0f, 0.8f)
-#define IMGUI_COLOR_LRED ImVec4(1.0f, 0.0f, 0.0f, 0.5f)
-#define IMGUI_COLOR_SLRED ImVec4(1.0f, 0.0f, 0.0f, 0.3f)
-
-#define IMGUI_COLOR_FBLACK ImVec4(0.015f, 0.0f, 0.0f, 1.0f)
-#define IMGUI_COLOR_BLACK ImVec4(0.015f, 0.0f, 0.0f, 0.8f)
-#define IMGUI_COLOR_LBLACK ImVec4(0.015f, 0.0f, 0.0f, 0.5f)
-#define IMGUI_COLOR_SLBLACK ImVec4(0.015f, 0.0f, 0.0f, 0.3f)
-
-
-
 ImGUI::ImGUI()
 {
 	// Default scale factor.
 	m_ScaleFactor = 1.0f;
 
+	m_HasEveryWindowsBeenUnfocused = false;
+
 	// Create ImGUI context.
 	m_Context = ImGui::CreateContext();
 
+	const std::filesystem::path configPath = "ImGUI.ini"_ApplicationPath;
+	static const std::string configPathStr = configPath.string();
+
 	// Create and setup ImGUI IO.
 	m_IO = &ImGui::GetIO();
-	m_IO->IniFilename = NULL;
+	m_IO->IniFilename = configPathStr.c_str();
 	m_IO->LogFilename = NULL;
 	m_IO->ConfigFlags |= ImGuiConfigFlags_NoMouseCursorChange;
 
@@ -39,7 +29,7 @@ ImGUI::ImGUI()
 	fontConfig.OversampleH = 2;
 	fontConfig.OversampleV = 2;
 
-	m_IO->Fonts->AddFontFromMemoryTTF(fontData.Data, fontData.Length, 30.0f, &fontConfig);
+	m_IO->Fonts->AddFontFromMemoryTTF(fontData.Data, fontData.Length, 40.0f, &fontConfig);
 
 	// Creating ImGUI theme & style.
 	m_Style = &ImGui::GetStyle();
@@ -77,11 +67,8 @@ ImGUI::ImGUI()
 	m_Style->Colors[ImGuiCol_PlotLines] = IMGUI_COLOR_BLACK;
 
 	// Registering windows...
-	std::shared_ptr<Console> consoleWindow = std::make_shared<Console>();
-
-	consoleWindow->Initialize(m_IO, m_Style);
-
-	m_Windows.emplace("Console", consoleWindow);
+	RegisterWindow<Home>("Home");
+	RegisterWindow<Console>("Console");
 }
 
 
@@ -111,6 +98,41 @@ void ImGUI::Render(ID3D12GraphicsCommandList* _GraphicsCommandList)
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
 
+	bool isAnyWindowFocused = ImGui::IsWindowFocused(ImGuiFocusedFlags_AnyWindow);
+
+	if (isAnyWindowFocused)
+	{
+		m_HasEveryWindowsBeenUnfocused = false;
+
+		// Unlock and show the mouse cursor on screen
+		rage::ioMouse::UnlockAndShowCursor(true);
+		rage::ioMouse::DisableCursorAlteration(true);
+
+		// Enable/Disable UI inputs
+		rage::UIInput::DisableAllInputs(true);
+
+		// Disable player movements & camera movements
+		rage::sagPlayerMgr::GetLocalPlayer()->DisablePlayerControl(true);
+	}
+	else
+	{
+		if (!m_HasEveryWindowsBeenUnfocused)
+		{
+			m_HasEveryWindowsBeenUnfocused = true;
+
+			// Allowing back cursor alteration will make the game automatically
+			// restore the correct cursor state
+			// Example: If the game is currently paused, the mouse will be unlocked and visible otherwise it will stay locked and invisible
+			rage::ioMouse::DisableCursorAlteration(false);
+
+			// Enable/Disable UI inputs
+			rage::UIInput::DisableAllInputs(false);
+
+			// Disable player movements & camera movements
+			rage::sagPlayerMgr::GetLocalPlayer()->DisablePlayerControl(false);
+		}
+	}
+
 	for (const auto& [_, window] : m_Windows)
 	{
 		window->Render();
@@ -139,6 +161,15 @@ void ImGUI::Shutdown(bool _DestroyContext)
 	}
 
 	LOG_DEV_INFO("Shutdown ImGUI");
+}
+
+
+
+void ImGUI::RegisterWindow(const std::string& _Name, const std::shared_ptr<ImGUIWindow>& _Window)
+{
+	_Window->Initialize(m_IO, m_Style);
+
+	m_Windows.insert_or_assign(_Name, _Window);
 }
 
 

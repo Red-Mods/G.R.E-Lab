@@ -38,33 +38,12 @@ class ImGUIWindow
 				{
 					if (m_IsOpen)
 					{
-						m_IsOpen = false;
-
-						// Allowing back cursor alteration will make the game automatically
-						// restore the correct cursor state
-						// Example: If the game is currently paused, the mouse will be unlocked and visible otherwise it will stay locked and invisible
-						rage::ioMouse::DisableCursorAlteration(false);
-
-						ImGui::SetWindowFocus(nullptr);
-
-						OnClose();
+						Close();
 					}
 					else
 					{
-						m_IsOpen = true;
-
-						// Unlock and show the mouse cursor on screen
-						rage::ioMouse::UnlockAndShowCursor(true);
-						rage::ioMouse::DisableCursorAlteration(true);
-
-						OnOpen();
+						Open();
 					}
-
-					// Enable/Disable UI inputs
-					rage::UIInput::DisableAllInputs(m_IsOpen);
-
-					// Enable/Disable player movements & camera movements
-					rage::sagPlayerMgr::GetLocalPlayer()->DisablePlayerControl(m_IsOpen);
 				}
 			}
 
@@ -79,10 +58,21 @@ class ImGUIWindow
 					if (m_Size.x != 0.0f || m_Size.y != 0.0f)
 						ImGui::SetNextWindowSize(m_Size);
 				}
-
-				// Disable player movements & camera movements
-				rage::sagPlayerMgr::GetLocalPlayer()->DisablePlayerControl(true);
 			}
+		}
+
+		void Open()
+		{
+			m_IsOpen = true;
+
+			OnOpen();
+		}
+
+		void Close()
+		{
+			m_IsOpen = false;
+
+			OnClose();
 		}
 
 		size_t GetId() const
@@ -106,10 +96,10 @@ class ImGUIWindow
 		ImGuiIO* m_IO;
 		ImGuiStyle* m_Style;
 
+		bool m_IsOpen;
+
 	private:
 		static inline size_t s_WindowsId = 0;
-
-		bool m_IsOpen;
 
 		bool m_HasBeenInitialized;
 };

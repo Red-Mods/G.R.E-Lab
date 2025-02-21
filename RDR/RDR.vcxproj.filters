@@ -30,6 +30,7 @@
     <ClInclude Include="Source\Game\sagPlayer\sagPlayer.h" />
     <ClInclude Include="Source\Game\sagActor\sagActor.h" />
     <ClInclude Include="Source\Game\sagActorManager\sagActorManager.h" />
+    <ClInclude Include="Source\ImGUI\Home\Home.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
@@ -49,6 +50,7 @@
     <ClCompile Include="Source\Game\sagPlayer\sagPlayer.cpp" />
     <ClCompile Include="Source\Game\sagActor\sagActor.cpp" />
     <ClCompile Include="Source\Game\sagActorManager\sagActorManager.cpp" />
+    <ClCompile Include="Source\ImGUI\Home\Home.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="RDR.rc" />

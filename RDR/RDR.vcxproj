@@ -169,7 +169,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)Resources\Includes\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Shared\Resources\Includes\;$(ProjectDir)Resources\Includes\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <UseStandardPreprocessor>true</UseStandardPreprocessor>
     </ClCompile>
     <Link>
@@ -191,7 +191,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)Resources\Includes\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Shared\Resources\Includes\;$(ProjectDir)Resources\Includes\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <UseStandardPreprocessor>true</UseStandardPreprocessor>
     </ClCompile>
     <Link>
@@ -215,7 +215,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)Resources\Includes\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Shared\Resources\Includes\;$(ProjectDir)Resources\Includes\;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <UseStandardPreprocessor>true</UseStandardPreprocessor>
     </ClCompile>
     <Link>
@@ -240,6 +240,7 @@
     <ClInclude Include="Headers\Singleton.h" />
     <ClInclude Include="Headers\Utils.h" />
     <ClInclude Include="Headers\VMT.h" />
+    <ClInclude Include="Source\ImGUI\Home\Home.h" />
     <ClInclude Include="Source\Game\sagActorManager\sagActorManager.h" />
     <ClInclude Include="Source\Game\sagActor\sagActor.h" />
     <ClInclude Include="Source\Game\sagPlayer\sagPlayer.h" />
@@ -261,6 +262,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Source\ImGUI\Home\Home.cpp" />
     <ClCompile Include="Source\Game\sagActorManager\sagActorManager.cpp" />
     <ClCompile Include="Source\Game\sagActor\sagActor.cpp" />
     <ClCompile Include="Source\Game\sagPlayer\sagPlayer.cpp" />

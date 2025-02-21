@@ -8,6 +8,5 @@
     <ClInclude Include="Source\Launcher\Launcher.h" />
     <ClInclude Include="Headers\Ini.hpp" />
     <ClInclude Include="Headers\Utils.hpp" />
-    <ClInclude Include="Headers\Defines.hpp" />
   </ItemGroup>
 </Project>

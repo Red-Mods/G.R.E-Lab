@@ -9,8 +9,6 @@
 #include <unordered_map>
 #include <shellapi.h>
 
-#include "../../Headers/Ini.hpp"
-
 
 
 enum Plateform

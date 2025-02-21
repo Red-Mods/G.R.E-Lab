@@ -34,6 +34,8 @@
 #include <ImGui/imgui_impl_win32.h>
 #include <ImGui/imgui_impl_dx12.h>
 
+#include <Shared/Utils.hpp>
+
 
 
 // Application headers
@@ -65,6 +67,8 @@
 #include "Source/Engine/Engine.h"
 
 #include "Source/ImGUI/ImGUIWindow.h"
+
+#include "Source/ImGUI/Home/Home.h"
 
 #include "Source/ImGUI/Console/Commands/Commands.h"
 #include "Source/ImGUI/Console/Console.h"

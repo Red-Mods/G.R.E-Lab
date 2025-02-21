@@ -4,10 +4,8 @@
 
 Console::Console()
 {
-	m_Position = ImVec2(100.0f, 100.0f);
+	m_Position = ImVec2(500.0f, 200.0f);
 	m_Size = ImVec2(800.0f, 600.0f);
-
-	m_OpenHotkey = ImGuiKey_F8;
 
 	m_ScrollToLastLine = false;
 	m_FocusTextInput = true;
@@ -36,9 +34,9 @@ void Console::Render()
 	if (!IsOpen())
 		return;
 
-	if (ImGui::Begin(APPLICATION_NAME " | Console##ConsoleWindow", NULL, ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoSavedSettings))
+	if (ImGui::Begin(APPLICATION_NAME " | Console##ConsoleWindow", &m_IsOpen, ImGuiWindowFlags_NoScrollbar))
 	{
-		if (ImGui::BeginChild("##ConsoleContent", ImVec2(0, m_Size.y - 60.0f), ImGuiChildFlags_Border))
+		if (ImGui::BeginChild("##ConsoleContent", ImVec2(0, m_Size.y - 70.0f), ImGuiChildFlags_Border))
 		{
 			const auto& lines = Log::GetCachedLogs();
 

@@ -2,8 +2,8 @@
 
 
 
-#include "Defines.hpp"
-
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
 #include <filesystem>
 #include <ShObjIdl_core.h>
 #include <TlHelp32.h>
@@ -256,17 +256,4 @@ namespace Utils
 
 		return NULL;
 	}
-}
-
-
-
-inline const std::filesystem::path operator ""_ApplicationPath(const char* _Path, std::size_t)
-{
-	static char buffer[MAX_PATH];
-
-	GetModuleFileNameA(HINST_THISCOMPONENT, buffer, MAX_PATH);
-
-	std::filesystem::path modulePath(buffer);
-
-	return modulePath.remove_filename() / _Path;
 }
