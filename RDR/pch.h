@@ -73,8 +73,6 @@
 #include "Source/ImGUI/Console/Commands/Commands.h"
 #include "Source/ImGUI/Console/Console.h"
 
-#include "Headers/IconsFontAwesome6.h"
-#include "Headers/IconsFontAwesome6Brands.h"
 #include "Source/ImGUI/ImGUI.h"
 
 #include "Source/Application/Application.h"

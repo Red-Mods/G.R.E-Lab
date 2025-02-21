@@ -15,8 +15,6 @@
     <ClInclude Include="Headers\EventsHandler.h" />
     <ClInclude Include="Headers\Defines.h" />
     <ClInclude Include="Headers\Hook.h" />
-    <ClInclude Include="Headers\IconsFontAwesome6.h" />
-    <ClInclude Include="Headers\IconsFontAwesome6Brands.h" />
     <ClInclude Include="Headers\Math.h" />
     <ClInclude Include="Headers\Memory.h" />
     <ClInclude Include="Headers\Pattern.h" />
@@ -56,9 +54,6 @@
     <ResourceCompile Include="RDR.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="fa-solid-900.ttf" />
     <Font Include="HapnaSlabSerif-DemiBold.ttf" />
-    <Font Include="Font Awesome 6 Brands-Regular-400.otf" />
-    <Font Include="GameFont.otf" />
   </ItemGroup>
 </Project>
