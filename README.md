@@ -19,6 +19,9 @@ By reversing structs, classes, enums and symbols you can directly contribute to 
 ### Is there any reverse engineering resources provided with this tool ?
 Yes, there is some resources available [here](https://github.com/Red-Mods/G.R.E-Lab/tree/main/Research).
 
+### Screenshots
+![G.R.E Lab in Red Dead Redemption](https://github.com/user-attachments/assets/849948c0-e9de-41e9-b800-128a4e4ab923)
+
 ### More Infos
 > [!NOTE]
 > Right now the purpose of this tool is only to study **Red Dead Redemption**, but this can be easily suited for others games.
