@@ -50,9 +50,9 @@ void Home::OnRender()
             ImGui::Text("Player Infos");
             ImGui::Separator();
 
-            ImGui::Text("DeadEye Points: %f", localPlayer->m_DeadEyePoints);
-            ImGui::Text("Max DeadEye Points: %f", localPlayer->m_MaxDeadEyePoints);
-            ImGui::Text("Added DeadEye Points Limit: %f", localPlayer->m_AddedDeadEyePointsLimit);
+            ImGui::Text("DeadEye Points: %.2f", localPlayer->m_DeadEyePoints);
+            ImGui::Text("Max DeadEye Points: %.2f", localPlayer->m_MaxDeadEyePoints);
+            ImGui::Text("Added DeadEye Points Limit: %.2f", localPlayer->m_AddedDeadEyePointsLimit);
 
             ImGui::SliderFloat("DeadEye Timescale", &localPlayer->m_DeadEyeTimescale, 0.0f, 10.0f, "%.1f");
 
@@ -82,13 +82,23 @@ void Home::OnRender()
                         Vector3 position = playerActor->m_ActorComponent->m_UnkStruct2->m_Position;
 
                         ImGui::Separator();
-                        ImGui::Text("X: %.3f | Y: %.3f | Z: %.3f", position.X, position.Y, position.Z);
+                        ImGui::Text("[Position] X: %.3f | Y: %.3f | Z: %.3f", position.X, position.Y, position.Z);
+                    }
+
+                    if (playerActor->m_MoverComponent)
+                    {
+                        Vector3 rotation = playerActor->m_MoverComponent->m_Rotation;
+
+                        ImGui::Separator();
+                        ImGui::Text("[Rotation] X: %.3f | Y: %.3f | Z: %.3f", rotation.X, rotation.Y, rotation.Z);
                     }
                 }
 
                 if (playerActor->m_HealthComponent)
                 {
                     ImGui::Separator();
+                    ImGui::Text("Current Health: %.2f", playerActor->m_HealthComponent->m_CurrentHealth);
+                    ImGui::Text("Max Health: %.2f", playerActor->m_HealthComponent->m_MaxHitPoints);
                     ImGui::Checkbox("Is Drunk", &playerActor->m_HealthComponent->m_IsDrunk);
                 }
             }

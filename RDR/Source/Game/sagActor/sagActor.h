@@ -63,6 +63,14 @@ namespace rage
 	};
 
 
+	
+	struct mvrMoverComponent
+	{
+		char m_Padding1[0x060];                      // 0x0000
+		Vector3 m_Rotation;                          // 0x0060
+	};
+
+
 
 	struct sagActor
 	{
@@ -73,7 +81,9 @@ namespace rage
 		sagGuid m_Guid;                              // 0x0008
 		char m_Padding2[0x050];                      // 0x0010
 		hlthHealthComponent* m_HealthComponent;      // 0x0060
-		char m_Padding3[0x048];                      // 0x0068
+		char m_Padding3[0x020];                      // 0x0068
+		mvrMoverComponent* m_MoverComponent;         // 0x0088
+		char m_Padding4[0x020];                      // 0x0090
 		sagActorComponent* m_ActorComponent;         // 0x00B0
 	};
 }
