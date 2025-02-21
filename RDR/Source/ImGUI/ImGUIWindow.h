@@ -44,6 +44,9 @@ class ImGUIWindow
 
 			if (m_IsOpen)
 			{
+				ImGui::SetNextWindowPos(m_Position, ImGuiCond_FirstUseEver);
+				ImGui::SetNextWindowSize(m_Size, ImGuiCond_FirstUseEver);
+
 				OnRender();
 			}
 		}

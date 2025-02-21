@@ -53,6 +53,10 @@ ImGUI::ImGUI()
 	m_Style->Colors[ImGuiCol_ScrollbarBg] = IMGUI_COLOR_LBLACK;
 	m_Style->Colors[ImGuiCol_ChildBg] = ImVec4();
 
+	m_Style->Colors[ImGuiCol_FrameBg] = IMGUI_COLOR_LBLACK;
+	m_Style->Colors[ImGuiCol_FrameBgHovered] = IMGUI_COLOR_SLRED;
+	m_Style->Colors[ImGuiCol_FrameBgActive] = IMGUI_COLOR_SLRED;
+
 	m_Style->Colors[ImGuiCol_CheckMark] = IMGUI_COLOR_FBLACK;
 	m_Style->Colors[ImGuiCol_Text] = IMGUI_COLOR_FBLACK;
 	m_Style->Colors[ImGuiCol_TextDisabled] = IMGUI_COLOR_LBLACK;
