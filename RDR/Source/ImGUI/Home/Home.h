@@ -7,5 +7,5 @@ class Home : public ImGUIWindow
 	public:
 		Home();
 
-		virtual void Render() override;
+		virtual void OnRender() override;
 };

@@ -49,6 +49,8 @@ void Application::__MainThread(Application* _Self)
 	}
 	while (!gameWindow);
 
+	Sleep(500);
+
 	const auto& directXHook = DirectXHook::Get();
 
 	directXHook->RegisterEvent(Event_OnInitialize, [=]()
@@ -89,6 +91,8 @@ void Application::__MainThread(Application* _Self)
 	{
 		if (GetAsyncKeyState(VK_DELETE))
 			break;
+
+		Sleep(10);
 	}
 
 	FreeLibraryAndExitThread(_Self->s_Module, EXIT_SUCCESS);

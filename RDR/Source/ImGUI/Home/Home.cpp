@@ -12,13 +12,8 @@ Home::Home()
 
 
 
-void Home::Render()
+void Home::OnRender()
 {
-	Super::Render();
-
-	if (!IsOpen())
-		return;
-
     if (ImGui::Begin(APPLICATION_NAME " | Home##HomeWindow", &m_IsOpen, ImGuiWindowFlags_MenuBar))
     {
         if (ImGui::BeginMenuBar())
@@ -53,12 +48,25 @@ void Home::Render()
 
         if (playerActor)
         {
-            if (playerActor->m_ActorComponent && playerActor->m_ActorComponent->m_UnkStruct2)
+            if (playerActor->m_ActorComponent)
             {
-                Vector3 position = playerActor->m_ActorComponent->m_UnkStruct2->m_Position;
+                /*
+                if (playerActor->m_ActorComponent->m_UnkStruct1)
+                {
+                    if (playerActor->m_ActorComponent->m_UnkStruct1->m_AnimatorComponent)
+                    {
 
-                ImGui::Text("Player Position");
-                ImGui::Text("X: %.3f | Y: %.3f | Z: %.3f", position.X, position.Y, position.Z);
+                    }
+                }
+                */
+
+                if (playerActor->m_ActorComponent->m_UnkStruct2)
+                {
+                    Vector3 position = playerActor->m_ActorComponent->m_UnkStruct2->m_Position;
+
+                    ImGui::Text("Player Position");
+                    ImGui::Text("X: %.3f | Y: %.3f | Z: %.3f", position.X, position.Y, position.Z);
+                }
             }
 
             if (playerActor->m_HealthComponent)

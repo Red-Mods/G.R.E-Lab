@@ -112,7 +112,10 @@ void ImGUI::Render(ID3D12GraphicsCommandList* _GraphicsCommandList)
 		rage::UIInput::DisableAllInputs(true);
 
 		// Disable player movements & camera movements
-		rage::sagPlayerMgr::GetLocalPlayer()->DisablePlayerControl(true);
+		rage::sagPlayer* localPlayer = rage::sagPlayerMgr::GetLocalPlayer();
+
+		if (localPlayer)
+			localPlayer->DisablePlayerControl(true);
 	}
 	else
 	{
@@ -129,7 +132,10 @@ void ImGUI::Render(ID3D12GraphicsCommandList* _GraphicsCommandList)
 			rage::UIInput::DisableAllInputs(false);
 
 			// Disable player movements & camera movements
-			rage::sagPlayerMgr::GetLocalPlayer()->DisablePlayerControl(false);
+			rage::sagPlayer* localPlayer = rage::sagPlayerMgr::GetLocalPlayer();
+
+			if (localPlayer)
+				localPlayer->DisablePlayerControl(false);
 		}
 	}
 

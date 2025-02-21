@@ -25,15 +25,8 @@ void Console::OnOpen()
 
 
 
-void Console::Render()
+void Console::OnRender()
 {
-	ImVec2 resolution = Utils::GetGameWindowResolution();
-
-	Super::Render();
-
-	if (!IsOpen())
-		return;
-
 	if (ImGui::Begin(APPLICATION_NAME " | Console##ConsoleWindow", &m_IsOpen, ImGuiWindowFlags_NoScrollbar))
 	{
 		if (ImGui::BeginChild("##ConsoleContent", ImVec2(0, m_Size.y - 70.0f), ImGuiChildFlags_Border))

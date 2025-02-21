@@ -8,7 +8,7 @@ class Console : public ImGUIWindow
 		Console();
 
 		virtual void OnOpen() override;
-		virtual void Render() override;
+		virtual void OnRender() override;
 
 	private:
 		bool m_ScrollToLastLine;
