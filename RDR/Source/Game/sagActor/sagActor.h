@@ -10,6 +10,16 @@ namespace rage
 
 
 
+	struct Matrix34
+	{
+		alignas(8) Vector3 Forward;                  // 0x0000
+		alignas(8) Vector3 Up;                       // 0x0010
+		alignas(8) Vector3 Right;                    // 0x0020
+		alignas(8) Vector3 Position;                 // 0x0030
+	};
+
+
+
 	struct hlthHealthComponent
 	{
 		void SetMaxHitPoints(float _MaxHitPoints);
@@ -63,11 +73,14 @@ namespace rage
 	};
 
 
-	
+
 	struct mvrMoverComponent
 	{
-		char m_Padding1[0x060];                      // 0x0000
-		Vector3 m_Rotation;                          // 0x0060
+		Vector3 GetPosition() const;
+		Vector3 GetRotation() const;
+
+		char m_Padding1[0x040];                      // 0x0000
+		Matrix34 m_Transform;                        // 0x0040
 	};
 
 

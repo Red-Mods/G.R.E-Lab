@@ -2,7 +2,7 @@
 
 
 
-namespace Rage
+namespace rage
 {
 	void Engine::Initialize()
 	{

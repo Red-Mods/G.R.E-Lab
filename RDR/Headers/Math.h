@@ -19,6 +19,16 @@ class Math
 		inline static const T DegToRad = PI / (T)180.0;
 		inline static const T RadToDeg = (T)180.0 / PI;
 
+		static T NormalizeAngle(T _Value)
+		{
+			if (_Value > 180.0f)
+				_Value -= 360.0f;
+			else if (_Value < -180.0f)
+				_Value += 360.0f;
+
+			return _Value;
+		}
+
 		static T Clamp(const T& _Value, const T& _Lower, const T& _Upper)
 		{
 			return std::max<T>(_Lower, std::min<T>(_Value, _Upper));
@@ -44,4 +54,7 @@ struct Vector3
 	float X;
 	float Y;
 	float Z;
+
+	Vector3() : X(0.0f), Y(0.0f), Z(0.0f) {}
+	Vector3(float _X, float _Y, float _Z) : X(_X), Y(_Y), Z(_Z) {}
 };

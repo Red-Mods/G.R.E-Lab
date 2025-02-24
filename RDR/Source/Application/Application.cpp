@@ -83,9 +83,9 @@ void Application::__MainThread(Application* _Self)
 	rage::sagActorManager::__LoadSigs();
 	rage::sagPlayerMgr::__LoadSigs();
 
-	Rage::NativesInvoker::Initialize();
+	rage::NativesInvoker::Initialize();
 
-	Rage::Engine::Initialize();
+	rage::Engine::Initialize();
 
 	while (true)
 	{
@@ -108,7 +108,7 @@ void Application::Shutdown()
 
 	DirectXHook::Get()->Shutdown();
 
-	Rage::Engine::Shutdown();
+	rage::Engine::Shutdown();
 
 	MH_Uninitialize();
 

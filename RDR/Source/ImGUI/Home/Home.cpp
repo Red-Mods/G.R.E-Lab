@@ -67,30 +67,21 @@ void Home::OnRender()
             {
                 if (playerActor->m_ActorComponent)
                 {
-                    /*
-                    if (playerActor->m_ActorComponent->m_UnkStruct1)
-                    {
-                        if (playerActor->m_ActorComponent->m_UnkStruct1->m_AnimatorComponent)
-                        {
-
-                        }
-                    }
-                    */
-
-                    if (playerActor->m_ActorComponent->m_UnkStruct2)
-                    {
-                        Vector3 position = playerActor->m_ActorComponent->m_UnkStruct2->m_Position;
-
-                        ImGui::Separator();
-                        ImGui::Text("[Position] X: %.3f | Y: %.3f | Z: %.3f", position.X, position.Y, position.Z);
-                    }
+                    ImGui::Text("Player Actor: 0x%p", playerActor);
 
                     if (playerActor->m_MoverComponent)
                     {
-                        Vector3 rotation = playerActor->m_MoverComponent->m_Rotation;
+                        Vector3 position = playerActor->m_MoverComponent->GetPosition();
+                        Vector3 rotation = playerActor->m_MoverComponent->GetRotation();
 
                         ImGui::Separator();
-                        ImGui::Text("[Rotation] X: %.3f | Y: %.3f | Z: %.3f", rotation.X, rotation.Y, rotation.Z);
+                        ImGui::Text("[Position] X: %.3f | Y: %.3f | Z: %.3f", position.X, position.Y, position.Z);
+                        ImGui::Text("[Rotation (Using reversed structs)] X: %.3f | Y: %.3f | Z: %.3f", rotation.X, rotation.Y, rotation.Z);
+
+                        Vector3 rotation2;
+                        rage::Invoke<0x27B7D6D6, bool>(rage::Invoke<0xE8CFDD53, int>(-1), &rotation2);
+
+                        ImGui::Text("[Rotation (Using natives invoker)] X: %.3f | Y: %.3f | Z: %.3f", rotation2.X, rotation2.Y, rotation2.Z);
                     }
                 }
 

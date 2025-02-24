@@ -2,15 +2,8 @@
 
 
 
-namespace Rage
+namespace rage
 {
-	struct Matrix4x4
-	{
-		float m[16];
-	};
-
-
-
 	class Engine
 	{
 		public:
