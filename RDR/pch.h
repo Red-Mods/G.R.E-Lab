@@ -60,6 +60,10 @@
 
 #include "Source/Game/ioMouse/ioMouse.h"
 #include "Source/Game/UIInput/UIInput.h"
+
+#include "Source/Game/gohObjectManager/gohObjectManager.h"
+
+#include "Source/Game/sagGuid/sagGuid.h"
 #include "Source/Game/sagActorManager/sagActorManager.h"
 #include "Source/Game/sagPlayer/sagPlayer.h"
 #include "Source/Game/sagPlayerMgr/sagPlayerMgr.h"

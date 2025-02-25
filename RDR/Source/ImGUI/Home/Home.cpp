@@ -75,13 +75,68 @@ void Home::OnRender()
                         Vector3 rotation = playerActor->m_MoverComponent->GetRotation();
 
                         ImGui::Separator();
-                        ImGui::Text("[Position] X: %.3f | Y: %.3f | Z: %.3f", position.X, position.Y, position.Z);
-                        ImGui::Text("[Rotation (Using reversed structs)] X: %.3f | Y: %.3f | Z: %.3f", rotation.X, rotation.Y, rotation.Z);
+                        ImGui::Text("[Position (MoverCmp Method)] X: %.3f | Y: %.3f | Z: %.3f", position.X, position.Y, position.Z);
+                        
+                        playerActor->GetGohObject()->GetPosition(&position);
 
-                        Vector3 rotation2;
-                        rage::Invoke<0x27B7D6D6, bool>(rage::Invoke<0xE8CFDD53, int>(-1), &rotation2);
+                        ImGui::Text("[Position (GohObj Method)] X: %.3f | Y: %.3f | Z: %.3f", position.X, position.Y, position.Z);
 
-                        ImGui::Text("[Rotation (Using natives invoker)] X: %.3f | Y: %.3f | Z: %.3f", rotation2.X, rotation2.Y, rotation2.Z);
+                        ImGui::Separator();
+                        ImGui::Text("[Heading (ActorCmp Method)] X: %.3f", playerActor->m_ActorComponent->GetHeading());
+
+                        ImGui::Text("[Rotation (MoverCmp Method)] X: %.3f | Y: %.3f | Z: %.3f", rotation.X, rotation.Y, rotation.Z);
+
+                        playerActor->GetGohObject()->GetRotation(&rotation);
+
+                        rotation *= Math<float>::RadToDeg;
+
+                        ImGui::Text("[Rotation (GohObj Method)] X: %.3f | Y: %.3f | Z: %.3f", rotation.X, rotation.Y, rotation.Z);
+
+                        rage::Invoke<0x27B7D6D6, bool>(rage::Invoke<0xE8CFDD53, int>(-1), &rotation);
+
+                        ImGui::Text("[Rotation (NativeInvoker Method)] X: %.3f | Y: %.3f | Z: %.3f", rotation.X, rotation.Y, rotation.Z);
+
+                        ImGui::Separator();
+                        if (ImGui::Button("Set Heading 0°"))
+                        {
+                            Vector3 newRotation(0.0f, 0.0f, 0.0f);
+
+                            newRotation *= Math<float>::DegToRad;
+
+                            playerActor->GetGohObject()->SetRotation(&newRotation);
+                        }
+                        if (ImGui::Button("Set Heading 90°"))
+                        {
+                            Vector3 newRotation(0.0f, 90.0f, 0.0f);
+
+                            newRotation *= Math<float>::DegToRad;
+
+                            playerActor->GetGohObject()->SetRotation(&newRotation);
+                        }
+                        if (ImGui::Button("Set Heading 180°"))
+                        {
+                            Vector3 newRotation(0.0f, 180.0f, 0.0f);
+
+                            newRotation *= Math<float>::DegToRad;
+
+                            playerActor->GetGohObject()->SetRotation(&newRotation);
+                        }
+                        if (ImGui::Button("Set Heading -90°"))
+                        {
+                            Vector3 newRotation(0.0f, -90.0f, 0.0f);
+
+                            newRotation *= Math<float>::DegToRad;
+
+                            playerActor->GetGohObject()->SetRotation(&newRotation);
+                        }
+
+                        ImGui::Separator();
+                        if (ImGui::Button("Teleport To Armadillo"))
+                        {
+                            Vector3 newPosition(-2145.7f, 16.1f, 2611.8f);
+
+                            playerActor->GetGohObject()->SetPosition(&newPosition, true);
+                        }
                     }
                 }
 

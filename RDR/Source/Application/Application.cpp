@@ -80,6 +80,8 @@ void Application::__MainThread(Application* _Self)
 	rage::ioMouse::__LoadSigs();
 	rage::UIInput::__LoadSigs();
 
+	rage::gohObjectManager::__LoadSigs();
+
 	rage::sagActorManager::__LoadSigs();
 	rage::sagPlayerMgr::__LoadSigs();
 

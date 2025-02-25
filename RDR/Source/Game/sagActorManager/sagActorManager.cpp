@@ -19,6 +19,6 @@ namespace rage
 		if (!s_GeneralManagerSlots)
 			return nullptr;
 
-		return *reinterpret_cast<sagActor**>(*s_GeneralManagerSlots + 0x10i64 * (uint16_t)_Guid);
+		return *reinterpret_cast<sagActor**>(*s_GeneralManagerSlots + 0x10i64 * (uint16_t)_Guid.Value);
 	}
 }

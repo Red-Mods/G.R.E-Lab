@@ -229,6 +229,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Game\gohBase\gohBase.h" />
+    <ClInclude Include="Source\Game\gohObjectManager\gohObjectManager.h" />
     <ClInclude Include="Headers\EventsHandler.h" />
     <ClInclude Include="Headers\Defines.h" />
     <ClInclude Include="Headers\Hook.h" />
@@ -238,6 +240,7 @@
     <ClInclude Include="Headers\Singleton.h" />
     <ClInclude Include="Headers\Utils.h" />
     <ClInclude Include="Headers\VMT.h" />
+    <ClInclude Include="Source\Game\sagGuid\sagGuid.h" />
     <ClInclude Include="Source\ImGUI\Home\Home.h" />
     <ClInclude Include="Source\Game\sagActorManager\sagActorManager.h" />
     <ClInclude Include="Source\Game\sagActor\sagActor.h" />
@@ -260,6 +263,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Source\Game\gohObjectManager\gohObjectManager.cpp" />
+    <ClCompile Include="Source\Game\sagGuid\sagGuid.cpp" />
     <ClCompile Include="Source\ImGUI\Home\Home.cpp" />
     <ClCompile Include="Source\Game\sagActorManager\sagActorManager.cpp" />
     <ClCompile Include="Source\Game\sagActor\sagActor.cpp" />

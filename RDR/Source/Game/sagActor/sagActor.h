@@ -4,8 +4,6 @@
 
 namespace rage
 {
-	using sagGuid = uint32_t;
-
 	struct sagActor;
 
 
@@ -65,11 +63,34 @@ namespace rage
 
 	struct sagActorComponent
 	{
-		char m_Padding1[0x010];                      // 0x0000
+		float GetHeading()
+		{
+			int unk = 2;
+			Matrix34* transform = GetTransform(&unk);
+
+			if (!transform)
+				return 0.0f;
+
+			return atan2(transform->Right.X, transform->Right.Z) * Math<float>::RadToDeg;
+		}
+
+		virtual void VFunction000() = 0;
+		virtual void VFunction001() = 0;
+		virtual void VFunction002() = 0;
+		virtual void VFunction003() = 0;
+		virtual void VFunction004() = 0;
+		virtual void VFunction005() = 0;
+		virtual void VFunction006() = 0;
+		virtual void VFunction007() = 0;
+		virtual void VFunction008() = 0;
+		virtual void VFunction009() = 0;
+		virtual void VFunction010() = 0;
+		virtual void VFunction011() = 0;
+		virtual Matrix34* GetTransform(int* _Unk) = 0;
+
+		char m_Padding1[0x008];                      // 0x0008
 		unkStruct1* m_UnkStruct1;                    // 0x0010
 		unkStruct2* m_UnkStruct2;                    // 0x0018
-		char m_Padding2[0x014];                      // 0x0020
-		float m_Unk;                                 // 0x0034
 	};
 
 
@@ -81,16 +102,23 @@ namespace rage
 
 		char m_Padding1[0x040];                      // 0x0000
 		Matrix34 m_Transform;                        // 0x0040
+		char m_Padding2[0xAB8];                      // 0x0080
+		uint32_t m_SomeFlag1;                        // 0x0B38
+		char m_Padding3[0x049];                      // 0x0B3C
+		uint32_t m_SomeFlag2;                        // 0x0B85
 	};
 
 
 
 	struct sagActor
 	{
+		gohBase* GetGohObject() const;
+
 		bool IsAlive() const;
 		bool IsDrunk() const;
 
-		char m_Padding1[0x008];                      // 0x0000
+		virtual void VFunction000() = 0;
+
 		sagGuid m_Guid;                              // 0x0008
 		char m_Padding2[0x050];                      // 0x0010
 		hlthHealthComponent* m_HealthComponent;      // 0x0060
@@ -98,5 +126,7 @@ namespace rage
 		mvrMoverComponent* m_MoverComponent;         // 0x0088
 		char m_Padding4[0x020];                      // 0x0090
 		sagActorComponent* m_ActorComponent;         // 0x00B0
+		char m_Padding5[0x0D0];                      // 0x00B8
+		gohGuid m_GohGuid;                           // 0x0188
 	};
 }

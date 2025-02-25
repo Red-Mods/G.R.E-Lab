@@ -20,27 +20,20 @@ namespace rage
 
 	Vector3 mvrMoverComponent::GetRotation() const
 	{
-		// Get the pitch, yaw and roll from the matrix (forward, up & right vectors)
-		float pitch = -asin(m_Transform.Forward.Z);
-		float yaw = atan2(m_Transform.Forward.Y, m_Transform.Forward.X);
-		float roll = atan2(m_Transform.Up.Z, m_Transform.Right.Z);
+		// The yaw is correct, but idk about the calculation for pitch & roll
+		// I'm not an expert regarding angles/trigo stuff tbh, so this need to be verified
+		float pitch = atan2(m_Transform.Forward.Y, m_Transform.Forward.X) * Math<float>::RadToDeg;
+		float yaw = atan2(m_Transform.Right.X, m_Transform.Right.Z) * Math<float>::RadToDeg;
+		float roll = atan2(m_Transform.Up.Z, m_Transform.Right.Z) * Math<float>::RadToDeg;
 
-		// Convert from radians to degrees
-		pitch *= Math<float>::RadToDeg;
-		yaw *= Math<float>::RadToDeg;
-		roll *= Math<float>::RadToDeg;
+		return Vector3(pitch, yaw, roll);
+	}
 
-		// Fix when we're in the pitch "flipping" side, so we get proper ±0° to ±180° range instead
-		// This is a fix bcs 'asin()' function is limited in a range of ±0° to ±90°
-		if (m_Transform.Forward.X < 0.0f)
-			pitch = 180.0f - pitch;
 
-		// Normalize the angles
-		pitch = Math<float>::NormalizeAngle(pitch);
-		yaw = Math<float>::NormalizeAngle(yaw);
-		roll = Math<float>::NormalizeAngle(roll);
 
-		return Vector3(yaw, pitch, roll);
+	gohBase* sagActor::GetGohObject() const
+	{
+		return gohObjectManager::GetObjectFromGuid(m_GohGuid);
 	}
 
 
