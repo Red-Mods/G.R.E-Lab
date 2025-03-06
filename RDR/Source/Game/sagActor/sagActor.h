@@ -4,59 +4,10 @@
 
 namespace rage
 {
-	struct sagActor;
-
-
-
-	struct Matrix34
-	{
-		alignas(8) Vector3 Forward;                  // 0x0000
-		alignas(8) Vector3 Up;                       // 0x0010
-		alignas(8) Vector3 Right;                    // 0x0020
-		alignas(8) Vector3 Position;                 // 0x0030
-	};
-
-
-
-	struct hlthHealthComponent
-	{
-		void SetMaxHitPoints(float _MaxHitPoints);
-
-		char m_Padding1[0x010];                      // 0x0000
-		sagActor* m_Actor;                           // 0x0010
-		char m_Padding2[0x004];                      // 0x0018
-		float m_MaxHitPoints;                        // 0x001C
-		float m_CurrentHealth;                       // 0x0020
-		char m_Padding3[0x151];                      // 0x0024
-		bool m_IsDrunk;                              // 0x0175
-	};
-
-
-
-	struct animAnimatorComponent
-	{
-		char m_Padding1[0x010];                      // 0x0000
-		sagActor* m_Actor;                           // 0x0010
-		char m_Padding2[0xA54];                      // 0x0018
-		float m_UnkFloat1;                           // 0x0A6C
-		char m_Padding3[0x014];                      // 0x0A70
-		float m_UnkFloat2;                           // 0x0A84
-	};
-
-
-
-	struct unkStruct1
+	struct unkStruct
 	{
 		char m_Padding1[0x038];                      // 0x0000
 		animAnimatorComponent* m_AnimatorComponent;  // 0x0038
-	};
-
-
-
-	struct unkStruct2
-	{
-		char m_Padding1[0x030];                      // 0x0000
-		Vector3 m_Position;                          // 0x0030
 	};
 
 
@@ -89,23 +40,8 @@ namespace rage
 		virtual Matrix34* GetTransform(int* _Unk) = 0;
 
 		char m_Padding1[0x008];                      // 0x0008
-		unkStruct1* m_UnkStruct1;                    // 0x0010
-		unkStruct2* m_UnkStruct2;                    // 0x0018
-	};
-
-
-
-	struct mvrMoverComponent
-	{
-		Vector3 GetPosition() const;
-		Vector3 GetRotation() const;
-
-		char m_Padding1[0x040];                      // 0x0000
-		Matrix34 m_Transform;                        // 0x0040
-		char m_Padding2[0xAB8];                      // 0x0080
-		uint32_t m_SomeFlag1;                        // 0x0B38
-		char m_Padding3[0x049];                      // 0x0B3C
-		uint32_t m_SomeFlag2;                        // 0x0B85
+		unkStruct* m_UnkStruct;                      // 0x0010
+		Matrix34* m_Transform;                       // 0x0018
 	};
 
 
@@ -120,7 +56,7 @@ namespace rage
 		virtual void VFunction000() = 0;
 
 		sagGuid m_Guid;                              // 0x0008
-		char m_Padding2[0x050];                      // 0x0010
+		char m_Padding2[0x054];                      // 0x000C
 		hlthHealthComponent* m_HealthComponent;      // 0x0060
 		char m_Padding3[0x020];                      // 0x0068
 		mvrMoverComponent* m_MoverComponent;         // 0x0088

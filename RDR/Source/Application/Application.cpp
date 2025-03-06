@@ -77,6 +77,8 @@ void Application::__MainThread(Application* _Self)
 
 	InputsHook::Initialize(gameWindow);
 
+	SigsDatabase::Scan();
+
 	rage::ioMouse::__LoadSigs();
 	rage::UIInput::__LoadSigs();
 
@@ -87,7 +89,9 @@ void Application::__MainThread(Application* _Self)
 
 	rage::NativesInvoker::Initialize();
 
-	rage::Engine::Initialize();
+	rage::scrThread::Initialize();
+
+	FibersPool::Get()->Add<Features>(RunFilter_Main);
 
 	while (true)
 	{
@@ -110,7 +114,7 @@ void Application::Shutdown()
 
 	DirectXHook::Get()->Shutdown();
 
-	rage::Engine::Shutdown();
+	rage::scrThread::Shutdown();
 
 	MH_Uninitialize();
 

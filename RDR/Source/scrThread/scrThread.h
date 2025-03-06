@@ -4,7 +4,7 @@
 
 namespace rage
 {
-	class Engine
+	class scrThread
 	{
 		public:
 			static void Initialize();
