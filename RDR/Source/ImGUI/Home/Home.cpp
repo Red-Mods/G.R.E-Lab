@@ -86,6 +86,7 @@ void Home::OnRender()
                         Vector3 rotation = playerActor->m_MoverComponent->GetRotation();
 
                         ImGui::Separator();
+
                         ImGui::Text("[Position (MoverCmp Method)] X: %.3f | Y: %.3f | Z: %.3f", position.X, position.Y, position.Z);
                         
                         playerActor->GetGohObject()->GetPosition(&position);
@@ -93,6 +94,7 @@ void Home::OnRender()
                         ImGui::Text("[Position (GohObj Method)] X: %.3f | Y: %.3f | Z: %.3f", position.X, position.Y, position.Z);
 
                         ImGui::Separator();
+
                         ImGui::Text("[Heading (ActorCmp Method)] X: %.3f", playerActor->m_ActorComponent->GetHeading());
 
                         ImGui::Text("[Rotation (MoverCmp Method)] X: %.3f | Y: %.3f | Z: %.3f", rotation.X, rotation.Y, rotation.Z);
