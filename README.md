@@ -13,7 +13,7 @@ This tool allow you to experiment with game functionalities. But this is not a "
 By reversing structs, classes, enums and symbols you can directly contribute to this tool and tests stuff using the ImGUI implementation.
 
 ### What skills do I need to contribute ?
-- Reverse engineering (The knowledge of this softwares is recommended: IDA, Ghidra, x64dbg, ReClass, Cheat Engine)
+- Reverse engineering (The knowledge of this softwares are recommended: IDA, Ghidra, x64dbg, ReClass, Cheat Engine)
 - Experience with C++
 
 ### Is there any reverse engineering resources provided with this tool ?
