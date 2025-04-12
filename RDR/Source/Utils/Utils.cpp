@@ -1,18 +1,10 @@
-#pragma once
-
-
-
-struct FontData
-{
-	LPVOID Data;
-	DWORD Length;
-};
+#include <pch.h>
 
 
 
 namespace Utils
 {
-	static ImVec2 GetGameWindowResolution()
+	ImVec2 GetGameWindowResolution()
 	{
 		static HWND gameWindow = FindWindowA(GAME_WINDOW_CLASS_NAME, NULL);
 
@@ -22,7 +14,7 @@ namespace Utils
 		return ImVec2((float)(rect.right - rect.left), (float)(rect.bottom - rect.top));
 	}
 
-	static FontData LoadFont(HMODULE _Module, const WCHAR* _Name, const WCHAR* _Format)
+	FontData LoadFont(HMODULE _Module, const WCHAR* _Name, const WCHAR* _Format)
 	{
 		HRSRC resource = FindResourceW(_Module, _Name, _Format);
 
@@ -43,7 +35,7 @@ namespace Utils
 		return {};
 	}
 
-	static const std::vector<std::string> GetAllFilesFromDirectory(const std::string& _Path)
+	const std::vector<std::string> GetAllFilesFromDirectory(const std::string& _Path)
 	{
 		std::vector<std::string> names;
 
@@ -59,8 +51,7 @@ namespace Utils
 				{
 					names.push_back(fd.cFileName);
 				}
-			}
-			while (FindNextFileA(hFind, &fd));
+			} while (FindNextFileA(hFind, &fd));
 
 			FindClose(hFind);
 		}
@@ -68,7 +59,7 @@ namespace Utils
 		return names;
 	}
 
-	static tm GetSystemTime()
+	tm GetSystemTime()
 	{
 		tm time_struct;
 		time_t current_time = time(NULL);
@@ -78,7 +69,7 @@ namespace Utils
 		return time_struct;
 	}
 
-	static BYTE StringToByte(const std::string& _Str)
+	BYTE StringToByte(const std::string& _Str)
 	{
 		std::istringstream iss(_Str);
 		uint32_t value = 0;
@@ -88,14 +79,14 @@ namespace Utils
 		return static_cast<BYTE>(value);
 	}
 
-	static const std::string GetFilename(const std::string& _Filename)
+	const std::string GetFilename(const std::string& _Filename)
 	{
 		size_t lastIndex = _Filename.find_last_of("\\") + 1;
 
 		return _Filename.substr(lastIndex, _Filename.length() - lastIndex);
 	}
 
-	static const std::string GetFilenameWithoutExtension(const std::string& _Filename)
+	const std::string GetFilenameWithoutExtension(const std::string& _Filename)
 	{
 		size_t lastIndex = _Filename.find_last_of(".");
 
@@ -107,7 +98,7 @@ namespace Utils
 		return _Filename.substr(0, lastIndex);
 	}
 
-	static const std::string GetModuleFullName(HMODULE _Module)
+	const std::string GetModuleFullName(HMODULE _Module)
 	{
 		char buffer[MAX_PATH];
 		GetModuleFileNameA(_Module, buffer, MAX_PATH);
@@ -115,19 +106,19 @@ namespace Utils
 		return buffer;
 	}
 
-	static const std::string GetModuleName(HMODULE _Module)
+	const std::string GetModuleName(HMODULE _Module)
 	{
 		return GetFilename(GetModuleFullName(_Module));
 	}
 
-	static const std::string GetModuleNameWithoutExtension(HMODULE _Module)
+	const std::string GetModuleNameWithoutExtension(HMODULE _Module)
 	{
 		const std::string fileNameWithExtension = GetModuleName(_Module);
 
 		return GetFilenameWithoutExtension(fileNameWithExtension);
 	}
 
-	static const std::string ToUpper(const std::string& _Str)
+	const std::string ToUpper(const std::string& _Str)
 	{
 		std::string str = _Str;
 
@@ -136,7 +127,7 @@ namespace Utils
 		return str;
 	}
 
-	static const std::string ToLower(const std::string& _Str)
+	const std::string ToLower(const std::string& _Str)
 	{
 		std::string str = _Str;
 

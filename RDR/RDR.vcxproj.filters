@@ -19,7 +19,7 @@
     <ClInclude Include="Headers\Memory.h" />
     <ClInclude Include="Headers\Pattern.h" />
     <ClInclude Include="Headers\Singleton.h" />
-    <ClInclude Include="Headers\Utils.h" />
+    <ClInclude Include="Source\Utils\Utils.h" />
     <ClInclude Include="Headers\VMT.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Source\Game\ioMouse\ioMouse.h" />
@@ -71,6 +71,7 @@
     <ClCompile Include="Source\FibersManager\IFiber\IFiber.cpp" />
     <ClCompile Include="Source\FibersManager\Fiber\Fiber.cpp" />
     <ClCompile Include="Source\Features\Features.cpp" />
+    <ClCompile Include="Source\Utils\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="RDR.rc" />

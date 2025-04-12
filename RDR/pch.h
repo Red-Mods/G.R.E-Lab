@@ -41,11 +41,11 @@
 // Application headers
 #include "Headers/Singleton.h"
 #include "Headers/Defines.h"
-#include "Headers/Utils.h"
 #include "Headers/Math.h"
 #include "Headers/EventsHandler.h"
 #include "Headers/Memory.h"
 
+#include "Source/Utils/Utils.h"
 #include "Source/Log/Log.h"
 
 #include "Headers/Hook.h"

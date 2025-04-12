@@ -246,7 +246,7 @@
     <ClInclude Include="Headers\Memory.h" />
     <ClInclude Include="Headers\Pattern.h" />
     <ClInclude Include="Headers\Singleton.h" />
-    <ClInclude Include="Headers\Utils.h" />
+    <ClInclude Include="Source\Utils\Utils.h" />
     <ClInclude Include="Headers\VMT.h" />
     <ClInclude Include="Source\Game\Matrix34\Matrix34.h" />
     <ClInclude Include="Source\Game\sagGuid\sagGuid.h" />
@@ -271,6 +271,7 @@
     <ClInclude Include="Source\Game\UIInput\UIInput.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Utils\Utils.cpp" />
     <ClCompile Include="Source\Features\Features.cpp" />
     <ClCompile Include="Source\FibersManager\Fiber\Fiber.cpp" />
     <ClCompile Include="Source\FibersManager\IFiber\IFiber.cpp" />
