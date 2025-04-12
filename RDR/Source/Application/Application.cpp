@@ -79,14 +79,6 @@ void Application::__MainThread(Application* _Self)
 
 	SigsDatabase::Scan();
 
-	rage::ioMouse::__LoadSigs();
-	rage::UIInput::__LoadSigs();
-
-	rage::gohObjectManager::__LoadSigs();
-
-	rage::sagActorManager::__LoadSigs();
-	rage::sagPlayerMgr::__LoadSigs();
-
 	rage::NativesInvoker::Initialize();
 
 	rage::scrThread::Initialize();

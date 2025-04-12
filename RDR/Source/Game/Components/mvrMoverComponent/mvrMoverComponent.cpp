@@ -6,6 +6,9 @@ namespace rage
 {
 	void mvrMoverComponent::EnableMoverCollision(bool _Enable)
 	{
+		if (!SigsDatabase::s_mvrMoverComponent__EnableMoverCollision)
+			return;
+
 		return SigsDatabase::s_mvrMoverComponent__EnableMoverCollision(this, _Enable);
 	}
 
