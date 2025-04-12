@@ -10,7 +10,7 @@ ImGUI::ImGUI()
 	m_HasEveryWindowsBeenUnfocused = false;
 
 	// Create ImGUI context.
-	m_Context = ImGui::CreateContext();
+	ImGui::CreateContext();
 
 	const std::filesystem::path configPath = "ImGUI.ini"_ApplicationPath;
 	static const std::string configPathStr = configPath.string();
@@ -164,10 +164,8 @@ void ImGUI::Shutdown(bool _DestroyContext)
 		if (ImGui::GetIO().BackendPlatformUserData)
 			ImGui_ImplWin32_Shutdown();
 
-		/* For some reason this is crashing the game when uninjecting (probably something not properly free'ed' properly or some thread sync issues)
 		if (_DestroyContext)
 			ImGui::DestroyContext();
-		*/
 	}
 
 	LOG_DEV_INFO("Shutdown ImGUI");

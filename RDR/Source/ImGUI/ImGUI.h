@@ -62,7 +62,6 @@ class ImGUI : public Singleton<ImGUI>
 	private:
 		ImGuiIO* m_IO;
 		ImGuiStyle* m_Style;
-		ImGuiContext* m_Context;
 
 		float m_ScaleFactor;
 
