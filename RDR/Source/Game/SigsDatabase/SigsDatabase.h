@@ -7,6 +7,7 @@ namespace rage
 {
 	struct sagPlayer;
 
+	struct animAnimatorComponent;
 	struct mvrMoverComponent;
 }
 
@@ -15,6 +16,7 @@ namespace rage
 // Functions definition
 using f_UnlockAndShowCursor = bool(*)(bool _Toggle);
 
+using f_animAnimatorComponent__GetCurrentAnimDuration = double(*)(rage::animAnimatorComponent* _This);
 using f_mvrMoverComponent__EnableMoverCollision = void(*)(rage::mvrMoverComponent* _This, bool _Enable);
 
 
@@ -41,6 +43,9 @@ class SigsDatabase
 
 		// sagPlayerMgr
 		static inline rage::sagPlayer** s_LocalPlayer;
+
+		// animAnimatorComponent
+		static inline f_animAnimatorComponent__GetCurrentAnimDuration s_animAnimatorComponent__GetCurrentAnimDuration;
 
 		// mvrMoverComponent
 		static inline f_mvrMoverComponent__EnableMoverCollision s_mvrMoverComponent__EnableMoverCollision;

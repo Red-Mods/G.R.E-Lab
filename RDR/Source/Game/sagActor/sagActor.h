@@ -56,6 +56,19 @@ namespace rage
 		virtual void VFunction000() = 0;
 
 		sagGuid m_Guid;                              // 0x0008
+		char m_Padding2[0x02C];                      // 0x000C
+		animAnimatorComponent* m_AnimatorComponent;  // 0x0038
+		char m_Padding3[0x020];                      // 0x0040
+		hlthHealthComponent* m_HealthComponent;      // 0x0060
+		char m_Padding4[0x020];                      // 0x0068
+		mvrMoverComponent* m_MoverComponent;         // 0x0088
+		char m_Padding5[0x020];                      // 0x0090
+		sagActorComponent* m_ActorComponent;         // 0x00B0
+		char m_Padding6[0x0D0];                      // 0x00B8
+		gohGuid m_GohGuid;                           // 0x0188
+
+		/*
+		sagGuid m_Guid;                              // 0x0008
 		char m_Padding2[0x054];                      // 0x000C
 		hlthHealthComponent* m_HealthComponent;      // 0x0060
 		char m_Padding3[0x020];                      // 0x0068
@@ -64,5 +77,6 @@ namespace rage
 		sagActorComponent* m_ActorComponent;         // 0x00B0
 		char m_Padding5[0x0D0];                      // 0x00B8
 		gohGuid m_GohGuid;                           // 0x0188
+		*/
 	};
 }

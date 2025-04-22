@@ -80,6 +80,13 @@ void Home::OnRender()
                     ImGui::Text("[Up Vec (ActorCmpData Method)] X: %.3f | Y: %.3f | Z: %.3f", up.X, up.Y, up.Z);
                     ImGui::Text("[Right Vec (ActorCmpData Method)] X: %.3f | Y: %.3f | Z: %.3f", right.X, right.Y, right.Z);
 
+                    if (playerActor->m_AnimatorComponent)
+                    {
+                        double currentAnimDuration = playerActor->m_AnimatorComponent->GetCurrentAnimDuration();
+
+                        ImGui::Text("CurrAnimDuration: %.3f", currentAnimDuration);
+                    }
+
                     if (playerActor->m_MoverComponent)
                     {
                         position = playerActor->m_MoverComponent->GetPosition();

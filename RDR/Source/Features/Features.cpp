@@ -11,6 +11,7 @@ Features::Features() : Fiber()
 
 void Features::Update()
 {
+    /*
     rage::sagPlayer* localPlayer = rage::sagPlayerMgr::GetLocalPlayer();
 
     if (!localPlayer)
@@ -25,4 +26,5 @@ void Features::Update()
         return;
 
     // playerActor->m_MoverComponent->EnableMoverCollision(s_EnablePlayerCollision);
+    */
 }

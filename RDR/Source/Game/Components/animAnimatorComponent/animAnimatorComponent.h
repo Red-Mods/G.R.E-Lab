@@ -10,6 +10,8 @@ namespace rage
 
 	struct animAnimatorComponent
 	{
+		double GetCurrentAnimDuration();
+
 		char m_Padding1[0x010];                      // 0x0000
 		sagActor* m_Actor;                           // 0x0010
 		char m_Padding2[0xA54];                      // 0x0018

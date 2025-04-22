@@ -37,6 +37,11 @@ void SigsDatabase::Scan()
 		s_LocalPlayer = _This.Add(3).Rip().As<decltype(s_LocalPlayer)>();
 	});
 
+	Pattern("rage::animAnimatorComponent::GetCurrentAnimDuration", "E8 ? ? ? ? 0F 2F 05 ? ? ? ? 0F 82 ? ? ? ? 48 8D 15 ? ? ? ?").Scan([](const Pattern& _This)
+	{
+		s_animAnimatorComponent__GetCurrentAnimDuration = _This.Add(1).Rip().As<decltype(s_animAnimatorComponent__GetCurrentAnimDuration)>();
+	});
+
 	Pattern("rage::mvrMoverComponent::EnableMoverCollision", "E8 ? ? ? ? C6 87 ? ? ? ? ? 0F B6 47 5A").Scan([](const Pattern& _This)
 	{
 		s_mvrMoverComponent__EnableMoverCollision = _This.Add(1).Rip().As<decltype(s_mvrMoverComponent__EnableMoverCollision)>();
