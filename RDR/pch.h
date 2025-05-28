@@ -42,6 +42,7 @@
 #include "Headers/Singleton.h"
 #include "Headers/Defines.h"
 #include "Headers/Math.h"
+#include "Headers/Structs.h"
 #include "Headers/EventsHandler.h"
 #include "Headers/Memory.h"
 
@@ -62,20 +63,24 @@
 
 #include "Source/NativesInvoker/NativesInvoker.h"
 
+#include "Headers/Enums.h"
+#include "Headers/Natives.h"
+
 #include "Source/Game/SigsDatabase/SigsDatabase.h"
 
 #include "Source/Game/Matrix34/Matrix34.h"
 
+#include "Source/Game/ioKeyboard/ioKeyboard.h"
 #include "Source/Game/ioMouse/ioMouse.h"
 #include "Source/Game/UIInput/UIInput.h"
 
+#include "Source/Game/gohBase/gohBase.h"
 #include "Source/Game/gohObjectManager/gohObjectManager.h"
 
 #include "Source/Game/Components/hlthHealthComponent/hlthHealthComponent.h"
 #include "Source/Game/Components/mvrMoverComponent/mvrMoverComponent.h"
 #include "Source/Game/Components/animAnimatorComponent/animAnimatorComponent.h"
 
-#include "Source/Game/sagGuid/sagGuid.h"
 #include "Source/Game/sagActorManager/sagActorManager.h"
 #include "Source/Game/sagPlayer/sagPlayer.h"
 #include "Source/Game/sagPlayerMgr/sagPlayerMgr.h"

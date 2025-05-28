@@ -9,6 +9,6 @@ namespace rage
 		if (!SigsDatabase::s_GeneralManagerSlots)
 			return nullptr;
 
-		return *reinterpret_cast<sagActor**>(*SigsDatabase::s_GeneralManagerSlots + 0x10i64 * (uint16_t)_Guid.Value);
+		return *reinterpret_cast<sagActor**>(*SigsDatabase::s_GeneralManagerSlots + 0x10i64 * (uint16_t)_Guid);
 	}
 }

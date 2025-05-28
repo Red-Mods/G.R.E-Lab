@@ -69,6 +69,27 @@ void Home::OnRender()
                 {
                     ImGui::Text("Player Actor: 0x%p", playerActor);
 
+                    if (const auto& gohObject = playerActor->GetGohObject())
+                    {
+                        ImGui::Text("Object Type: %u", gohObject->m_ObjectType);
+                    }
+
+                    /*
+                    BYTE* unkValue = reinterpret_cast<BYTE*>(reinterpret_cast<uintptr_t>(playerActor) + 280);
+
+                    static int temp = 3;
+                    ImGui::SliderInt("Unk Flag", &temp, 0, 10);
+                    *unkValue = (BYTE)temp;
+                    */
+
+                    if (rage::ActionNode* currentActionNode = playerActor->m_ActorComponent->m_CurrentActionNode)
+                    {
+                        if (rage::Node* node = currentActionNode->GetNode())
+                        {
+                            ImGui::Text("CurrActionNode: %u", node->m_Id);
+                        }
+                    }
+
                     Vector3 position = playerActor->m_ActorComponent->m_Transform->Position;
 
                     Vector3 forward = playerActor->m_ActorComponent->m_Transform->Forward;
@@ -82,9 +103,33 @@ void Home::OnRender()
 
                     if (playerActor->m_AnimatorComponent)
                     {
-                        double currentAnimDuration = playerActor->m_AnimatorComponent->GetCurrentAnimDuration();
+                        ImGui::Text("m_AnimatorComponent: 0x%p", playerActor->m_AnimatorComponent);
 
-                        ImGui::Text("CurrAnimDuration: %.3f", currentAnimDuration);
+                        ImGui::Text("m_UnkFloat2: %f", playerActor->m_AnimatorComponent->m_UnkFloat2);
+                        ImGui::Text("m_UnkFloat3: %f", playerActor->m_AnimatorComponent->m_UnkFloat3);
+                        ImGui::Text("m_UnkFloat4: %f", playerActor->m_AnimatorComponent->m_UnkFloat4);
+                        ImGui::Text("CustomAnimSpeed: %f", playerActor->m_AnimatorComponent->m_CustomAnimSpeed);
+                        ImGui::SliderFloat("CustomAnimSpeed (Rewritten everyframe, can be patched however)", &playerActor->m_AnimatorComponent->m_CustomAnimSpeed, 0.0f, 10.0f, "%.1f");
+
+                        if (playerActor->m_AnimatorComponent->m_UnkAnimStruct1)
+                        {
+                            ImGui::Text("AnimUnkName1: %s", playerActor->m_AnimatorComponent->m_UnkAnimStruct1->m_UnkName);
+                        }
+
+                        if (playerActor->m_AnimatorComponent->m_UnkAnimStruct2)
+                        {
+                            ImGui::Text("AnimUnkName2: %s", playerActor->m_AnimatorComponent->m_UnkAnimStruct2->m_UnkName);
+                        }
+
+                        if (ImGui::Button("Stop Current Animation (Instant)"))
+                        {
+                            playerActor->m_AnimatorComponent->StopCurrentAnim(true);
+                        }
+
+                        if (ImGui::Button("Stop Current Animation (Interpolate)"))
+                        {
+                            playerActor->m_AnimatorComponent->StopCurrentAnim(false);
+                        }
                     }
 
                     if (playerActor->m_MoverComponent)
@@ -112,7 +157,8 @@ void Home::OnRender()
 
                         ImGui::Text("[Rotation (GohObj Method)] X: %.3f | Y: %.3f | Z: %.3f", rotation.X, rotation.Y, rotation.Z);
 
-                        rage::Invoke<0x27B7D6D6, bool>(rage::Invoke<0xE8CFDD53, int>(-1), &rotation);
+                        Actor_t localPlayerActor = ACTOR::GET_PLAYER_ACTOR(-1);
+                        rotation = OBJECT::GET_OBJECT_ORIENTATION(localPlayerActor);
 
                         ImGui::Text("[Rotation (NativeInvoker Method)] X: %.3f | Y: %.3f | Z: %.3f", rotation.X, rotation.Y, rotation.Z);
 

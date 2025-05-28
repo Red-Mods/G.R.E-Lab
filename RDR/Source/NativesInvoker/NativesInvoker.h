@@ -145,27 +145,27 @@ namespace rage
 
 			static bool IsInitialized();
 	};
+}
 
 
 
-	template<unsigned int _Hash, typename Result, typename... Args>
-	inline Result Invoke(Args... _Args)
+template<unsigned int _Hash, typename Result, typename... Args>
+inline Result Invoke(Args... _Args)
+{
+	rage::NativeContext context;
+	(context.Push(_Args), ...);
+
+	static auto handler = rage::NativesInvoker::GetNativeHandler(_Hash);
+
+	if (handler)
 	{
-		NativeContext context;
-		(context.Push(_Args), ...);
+		handler(&context);
+	}
 
-		static auto handler = NativesInvoker::GetNativeHandler(_Hash);
+	context.CopyReferencedParametersOut();
 
-		if (handler)
-		{
-			handler(&context);
-		}
-
-		context.CopyReferencedParametersOut();
-
-		if constexpr (!std::is_void_v<Result>)
-		{
-			return context.GetResult<Result>();
-		}
+	if constexpr (!std::is_void_v<Result>)
+	{
+		return context.GetResult<Result>();
 	}
 }

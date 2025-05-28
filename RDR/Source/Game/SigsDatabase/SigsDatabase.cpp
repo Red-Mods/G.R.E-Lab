@@ -7,6 +7,21 @@ void SigsDatabase::Scan()
 	if (s_HasBeenScanned)
 		return;
 
+	Pattern("rage::ioKeyboard::KeyDown", "48 8D 05 ? ? ? ? 48 89 74 24 ? 48 8D 4C 24 ? 48 89 44 24 ? 48 89 4C 24 ?").Scan([](const Pattern& _This)
+	{
+		s_KeyDown = _This.Add(3).Rip().As<decltype(s_KeyDown)>();
+	});
+
+	Pattern("rage::ioKeyboard::KeyPressed", "48 8D 05 ? ? ? ? 48 89 75 80").Scan([](const Pattern& _This)
+	{
+		s_KeyPressed = _This.Add(3).Rip().As<decltype(s_KeyPressed)>();
+	});
+
+	Pattern("rage::ioKeyboard::KeyReleased", "48 8D 05 ? ? ? ? 48 89 4D F8").Scan([](const Pattern& _This)
+	{
+		s_KeyReleased = _This.Add(3).Rip().As<decltype(s_KeyReleased)>();
+	});
+
 	Pattern("rage::ioMouse::sm_DisableCursorAlteration", "0F B6 0D ? ? ? ? 84 C9").Scan([](const Pattern& _This)
 	{
 		s_DisableCursorAlteration = _This.Add(3).Rip().As<decltype(s_DisableCursorAlteration)>();
@@ -35,6 +50,11 @@ void SigsDatabase::Scan()
 	Pattern("rage::sagPlayer::sm_LocalPlayer", "48 89 15 ? ? ? ? E9 ? ? ? ?").Scan([](const Pattern& _This)
 	{
 		s_LocalPlayer = _This.Add(3).Rip().As<decltype(s_LocalPlayer)>();
+	});
+
+	Pattern("rage::animAnimatorComponent::StopCurrentAnim", "E8 ? ? ? ? 48 8B 85 ? ? ? ? 48 85 C0 74 1F").Scan([](const Pattern& _This)
+	{
+		s_animAnimatorComponent__StopCurrentAnim = _This.Add(1).Rip().As<decltype(s_animAnimatorComponent__StopCurrentAnim)>();
 	});
 
 	Pattern("rage::animAnimatorComponent::GetCurrentAnimDuration", "E8 ? ? ? ? 0F 2F 05 ? ? ? ? 0F 82 ? ? ? ? 48 8D 15 ? ? ? ?").Scan([](const Pattern& _This)

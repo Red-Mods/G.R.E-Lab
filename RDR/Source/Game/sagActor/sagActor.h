@@ -12,6 +12,23 @@ namespace rage
 
 
 
+	struct Node
+	{
+		char m_Padding1[0x008];                      // 0x0000
+		uint32_t m_Id;                               // 0x0008
+	};
+
+
+
+	struct ActionNode
+	{
+		virtual void VFunction000() = 0;
+		// virtual void VFunction001() = 0;
+		virtual Node* GetNode() = 0; // It should be index 2 (3rd functions), there is something wrong somewhere
+	};
+
+
+
 	struct sagActorComponent
 	{
 		float GetHeading()
@@ -42,6 +59,9 @@ namespace rage
 		char m_Padding1[0x008];                      // 0x0008
 		unkStruct* m_UnkStruct;                      // 0x0010
 		Matrix34* m_Transform;                       // 0x0018
+		char m_Padding2[0x090];                      // 0x0020
+		ActionNode* m_CurrentActionNode;             // 0x00B0
+		ActionNode* m_RequestedActionNode;           // 0x00B8
 	};
 
 

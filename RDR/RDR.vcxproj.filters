@@ -29,7 +29,6 @@
     <ClInclude Include="Source\Game\sagActor\sagActor.h" />
     <ClInclude Include="Source\Game\sagActorManager\sagActorManager.h" />
     <ClInclude Include="Source\ImGUI\Home\Home.h" />
-    <ClInclude Include="Source\Game\sagGuid\sagGuid.h" />
     <ClInclude Include="Source\Game\gohObjectManager\gohObjectManager.h" />
     <ClInclude Include="Source\Game\gohBase\gohBase.h" />
     <ClInclude Include="Source\Game\Matrix34\Matrix34.h" />
@@ -41,6 +40,10 @@
     <ClInclude Include="Source\FibersManager\IFiber\IFiber.h" />
     <ClInclude Include="Source\FibersManager\Fiber\Fiber.h" />
     <ClInclude Include="Source\Features\Features.h" />
+    <ClInclude Include="Headers\Natives.h" />
+    <ClInclude Include="Headers\Enums.h" />
+    <ClInclude Include="Headers\Structs.h" />
+    <ClInclude Include="Source\Game\ioKeyboard\ioKeyboard.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
@@ -61,7 +64,6 @@
     <ClCompile Include="Source\Game\sagActor\sagActor.cpp" />
     <ClCompile Include="Source\Game\sagActorManager\sagActorManager.cpp" />
     <ClCompile Include="Source\ImGUI\Home\Home.cpp" />
-    <ClCompile Include="Source\Game\sagGuid\sagGuid.cpp" />
     <ClCompile Include="Source\Game\gohObjectManager\gohObjectManager.cpp" />
     <ClCompile Include="Source\Game\Components\hlthHealthComponent\hlthHealthComponent.cpp" />
     <ClCompile Include="Source\Game\Components\mvrMoverComponent\mvrMoverComponent.cpp" />
@@ -72,6 +74,7 @@
     <ClCompile Include="Source\FibersManager\Fiber\Fiber.cpp" />
     <ClCompile Include="Source\Features\Features.cpp" />
     <ClCompile Include="Source\Utils\Utils.cpp" />
+    <ClCompile Include="Source\Game\ioKeyboard\ioKeyboard.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="RDR.rc" />

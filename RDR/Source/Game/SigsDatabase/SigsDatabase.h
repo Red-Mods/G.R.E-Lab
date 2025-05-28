@@ -14,8 +14,11 @@ namespace rage
 
 
 // Functions definition
+using f_KeyAction = bool(*)(unsigned int _KeyCode);
+
 using f_UnlockAndShowCursor = bool(*)(bool _Toggle);
 
+using f_animAnimatorComponent__StopCurrentAnim = void(*)(rage::animAnimatorComponent* _This, bool _Unk);
 using f_animAnimatorComponent__GetCurrentAnimDuration = double(*)(rage::animAnimatorComponent* _This);
 using f_mvrMoverComponent__EnableMoverCollision = void(*)(rage::mvrMoverComponent* _This, bool _Enable);
 
@@ -26,6 +29,11 @@ class SigsDatabase
 {
 	public:
 		static void Scan();
+
+		// ioKeyboard
+		static inline f_KeyAction s_KeyDown;
+		static inline f_KeyAction s_KeyPressed;
+		static inline f_KeyAction s_KeyReleased;
 
 		// ioMouse
 		static inline bool* s_DisableCursorAlteration;
@@ -45,6 +53,7 @@ class SigsDatabase
 		static inline rage::sagPlayer** s_LocalPlayer;
 
 		// animAnimatorComponent
+		static inline f_animAnimatorComponent__StopCurrentAnim s_animAnimatorComponent__StopCurrentAnim;
 		static inline f_animAnimatorComponent__GetCurrentAnimDuration s_animAnimatorComponent__GetCurrentAnimDuration;
 
 		// mvrMoverComponent

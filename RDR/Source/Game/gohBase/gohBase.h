@@ -5,6 +5,7 @@
 namespace rage
 {
 	using gohGuid = uint32_t;
+	using sagGuid = uint32_t;
 
 
 
@@ -37,5 +38,10 @@ namespace rage
 		virtual bool GetRotation(Vector3* _Rotation) = 0;
 		virtual bool SetPosition(Vector3* _Position, bool _PlaceOnGround) = 0;
 		virtual bool SetRotation(Vector3* _Rotation) = 0;
+
+		char m_Padding1[0x024];                      // 0x0008
+		e_ObjectType m_ObjectType;                   // 0x002C
+		char m_Padding2[0x083];                      // 0x002D
+		sagGuid m_Guid;                              // 0x00B0
 	};
 }
